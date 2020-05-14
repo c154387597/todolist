@@ -1,5 +1,6 @@
 'use strict'
 
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
@@ -12,7 +13,12 @@ module.exports = {
       'pages': utils.resolve('src/pages')
     }
   },
-
+  entry: path.join(__dirname, '../src/index.js'),
+  output: {
+    filename: 'main.[hash:8].js',
+    path: path.join(__dirname, '../'),
+    publicPath: 'http://localhost:8080/'
+  },
   module: {
     rules: [
       {
@@ -59,7 +65,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      favicon: path.resolve('favicon.ico')
     }),
     new VueLoaderPlugin()
   ]
