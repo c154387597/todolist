@@ -1,7 +1,6 @@
 'use strict'
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
 const utils = require('./utils')
@@ -10,8 +9,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'pages': utils.resolve('src/pages'),
-      'static': utils.resolve('static')
+      'pages': utils.resolve('src/pages')
     }
   },
 
@@ -63,11 +61,6 @@ module.exports = {
       template: 'index.html',
       inject: true
     }),
-    new VueLoaderPlugin(),
-    new CopyWebpackPlugin([{
-      from: utils.resolve('static/img'),
-      to: utils.resolve('dist/static/img'),
-      toType: 'dir'
-    }])
+    new VueLoaderPlugin()
   ]
 }
