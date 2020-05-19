@@ -7,7 +7,9 @@ module.exports = async (ctx, renderer, template) => {
 
   try {
     const appString = await renderer.renderToString(context);
+    const {title} = context.meta.inject();
     const html = ejs.render(template, {
+      title: title.text(),
       appString,
       style: context.renderStyles(),
       scripts: context.renderScripts()

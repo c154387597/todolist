@@ -6,7 +6,8 @@ const webpack = require('webpack');
 const serverRender = require('./server-render');
 const VueServerRenderer = require('vue-server-renderer');
 
-const MemoryFs = require('memory-fs'); // 内存文件系统，将数据保存在javascript对象中
+// 内存文件系统，将数据保存在javascript对象中
+const MemoryFs = require('memory-fs');
 const serverConfig = require('../../build/webpack.config.server');
 const serverCompiler = webpack(serverConfig);
 const mfs = new MemoryFs();
@@ -44,6 +45,7 @@ const handleSSR = async (ctx) => {
     'utf-8'
   );
 
+  // 解析clientManifest，生成HTML
   const renderer = VueServerRenderer.createBundleRenderer(
     bundle, {
       inject: false,

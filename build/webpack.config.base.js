@@ -13,11 +13,11 @@ module.exports = {
       'pages': utils.resolve('src/pages')
     }
   },
-  entry: path.join(__dirname, '../src/index.js'),
+  entry: path.join(__dirname, '../src/client.entry.js'),
   output: {
     filename: 'main.[hash:8].js',
     path: path.join(__dirname, '../'),
-    publicPath: 'http://localhost:8080/'
+    publicPath: '/dist/'
   },
   module: {
     rules: [
@@ -66,6 +66,12 @@ module.exports = {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+      },
+      chunksSortMode: 'dependency',
       favicon: path.resolve('favicon.ico')
     }),
     new VueLoaderPlugin()

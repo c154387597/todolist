@@ -43,7 +43,7 @@ export default {
       filter: 'all'
     }
   },
-  created () {
+  mounted () {
     this.getStorage();
   },
   methods: {
@@ -69,17 +69,17 @@ export default {
       this.setStorage();
     },
     getStorage () {
-      // const storage = JSON.parse(localStorage.getItem('todo'));
-      // if (storage) {
-      //   this.todos = storage.list;
-      //   this.filter = storage.filter;
-      // }
+      const storage = JSON.parse(localStorage.getItem('todo'));
+      if (storage) {
+        this.todos = storage.list;
+        this.filter = storage.filter;
+      }
     },
     setStorage () {
-      // localStorage.setItem('todo', JSON.stringify({
-      //   filter: this.filter,
-      //   list: this.todos
-      // }));
+      localStorage.setItem('todo', JSON.stringify({
+        filter: this.filter,
+        list: this.todos
+      }));
     }
   },
   computed: {

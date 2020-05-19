@@ -8,6 +8,9 @@
 import Todo from './pages/todo.vue';
 
 export default {
+  metaInfo: {
+    title: 'the todolist'
+  },
   components: {
     Todo
   }
