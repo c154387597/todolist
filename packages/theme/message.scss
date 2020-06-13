@@ -1,0 +1,37 @@
+@import "./common/var.scss";
+@import "./mixins/mixins";
+
+@include b (message) {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 15px 10px;
+  max-width: $--message-max-width;
+  overflow: hidden;
+  text-align: center;
+  font-size: $--message-font-size;
+  transition: opacity .3s;
+  transform: translate(-50%, -50%);
+  border-radius: $--border-radius-base;
+  background: rgba($color: #000000, $alpha: .5);
+  box-sizing: border-box;
+  z-index: 9999;
+
+  p {
+    margin: 0;
+  }
+  .el-message__icon {
+    display: inline-block;
+    padding-bottom: 10px;
+    font-size: $--message-icon-size;
+  }
+  .el-message__content {
+    line-height: 1;
+    color: $--message-font-color;
+  }
+}
+
+.el-message-fade-enter,
+.el-message-fade-leave-active {
+  opacity: 0;
+}

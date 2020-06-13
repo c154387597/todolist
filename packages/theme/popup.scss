@@ -1,0 +1,77 @@
+@import "./common/var.scss";
+@import "./mixins/mixins";
+
+@include b(popup) {
+  position: fixed;
+  max-height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: #fff;
+
+  @include m(top) {
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  @include m(left) {
+    left: 0;
+    bottom: 0;
+    height: 100%;
+  }
+  @include m(right) {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+  }
+  @include m(bottom) {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+.el-popup-slide--left-enter-active {
+  animation: pop-slideLeft-in-down .2s;
+}
+.el-popup-slide--left-leave-active {
+  animation: pop-slideLeft-out-down .2s;
+}
+.el-popup-slide--bottom-enter-active {
+  animation: pop-slideBtm-in-down .2s;
+}
+.el-popup-slide--bottom-leave-active {
+  animation: pop-slideBtm-out-down .2s;
+}
+
+@keyframes pop-slideLeft-in-down {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes pop-slideLeft-out-down {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes pop-slideBtm-in-down {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes pop-slideBtm-out-down {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
